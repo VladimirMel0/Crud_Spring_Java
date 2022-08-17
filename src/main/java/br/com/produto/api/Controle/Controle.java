@@ -19,42 +19,53 @@ public class Controle {
     @Autowired
     private Repositorio acao;
 
+    // colocando registro no banco de dados
     @PostMapping("/api")
     public Pessoa cadastrar(@RequestBody Pessoa obj) {
         return acao.save(obj);
     }
 
+    // ver todos os registros 
     @GetMapping("/api")
     public List<Pessoa> selecionar(){
         return acao.findAll();
     }
+
+    // selecionar registro por codigo
     @GetMapping("/api/{codigo}")
     public Pessoa selecionarPeloCodigo(@PathVariable int codigo) {
         return acao.findByCodigo(codigo);
     }
     
+    // atualização de registro
     @PutMapping("/api")
     public Pessoa editar(@RequestBody Pessoa obj){
         return acao.save(obj);
     }
     
+    // delete de registro
     @DeleteMapping("/api/{codigo}")
     public void remover(@PathVariable int codigo){
         Pessoa obj = selecionarPeloCodigo(codigo);
         acao.delete(obj);
 
     }
-
+    // contador de registro
+    @GetMapping("/api/contador")
+    public long contador(){
+        return acao.count();
+    }
+    // hello
     @GetMapping("")
     public String mensagem(){
         return "Hello" ;
     }
-
+    // teste
     @GetMapping("/teste")
     public String teste(){
         return "Teste" ;
     }
-
+    // teste post
     @PostMapping("/pessoa")
     public Pessoa pessoa(@RequestBody Pessoa p){
         return p;
