@@ -18,6 +18,6 @@ public interface Repositorio extends CrudRepository<Pessoa, Integer>{
     //Asc-padrão
     //Desc-decrescente 
 
-    List<Pessoa> findByNomeOrderByIdadeDesc(String nome);
+    List<Pessoa> findByNomeOrderByIdade(String nome);
     //ordernar por nome especifico
 }

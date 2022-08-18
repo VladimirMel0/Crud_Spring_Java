@@ -66,7 +66,7 @@ public class Controle {
     //filtrar por nome e ordernar por idade 
     @GetMapping("/api/ordenarNomes2")
     public List<Pessoa> ordernarNomes2(){
-        return acao.findByNomeOrderByIdadeDesc("lais");
+        return acao.findByNomeOrderByIdade("lais");
     }
 
 
