@@ -16,6 +16,7 @@ import br.com.produto.api.repositorio.Repositorio;
 
 @RestController
 public class Controle {
+
     @Autowired
     private Repositorio acao;
 
@@ -54,7 +55,23 @@ public class Controle {
     @GetMapping("/api/contador")
     public long contador(){
         return acao.count();
+    }   
+    
+    // ordernar por nome 
+    @GetMapping("/api/ordernarNomes")
+    public List<Pessoa> ordenarNomes(){
+        return acao.findByOrderByNomeDesc();
     }
+
+    //filtrar por nome e ordernar por idade 
+    @GetMapping("/api/ordenarNomes2")
+    public List<Pessoa> ordernarNomes2(){
+        return acao.findByNomeOrderByIdadeDesc("lais");
+    }
+
+
+
+
     // hello
     @GetMapping("")
     public String mensagem(){
